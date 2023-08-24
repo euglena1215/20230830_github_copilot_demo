@@ -17,6 +17,14 @@ module MyActiveModel
       true
     end
 
+    def to_h
+      hash = {}
+      self.class.attributes.each do |name, _|
+        hash[name] = send(name)
+      end
+      hash
+    end
+
     private
 
     def valid_type?(value, type)
