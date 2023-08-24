@@ -10,12 +10,8 @@ module MyActiveModel
 
     module ClassMethods
       def attribute(name)
-        define_method(name) do
-          instance_variable_get("@#{name}")
-        end
-
-        define_method("#{name}=") do |val|
-          instance_variable_set("@#{name}", val)
+        class_eval do
+          attr_accessor name
         end
       end
     end
