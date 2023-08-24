@@ -1,3 +1,5 @@
+require 'json'
+
 module MyActiveModel
   module Model
     extend ActiveSupport::Concern
@@ -23,6 +25,10 @@ module MyActiveModel
         hash[name] = send(name)
       end
       hash
+    end
+
+    def to_json
+      to_h.to_json
     end
 
     private
