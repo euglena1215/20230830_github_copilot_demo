@@ -22,7 +22,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+class User
+  include MyActiveModel::Model
+  
+  attribute :name
+  attribute :age
+end
+
+user = User.new(name: 'John', age: 20)
+user.name # => 'John'
+user.age # => 20
+```
+
+### Future work
+```ruby
+class User
+  include MyActiveModel::Model
+  
+  attribute :name, :string
+  attribute :age, :integer
+end
+
+user = User.new(name: 'John', age: 20)
+user.valid? # => true
+user.to_h # => { name: 'John', age: 20 }
+user.to_json # => '{"name":"John","age":20}'
+```
 
 ## Development
 
